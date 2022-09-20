@@ -28,11 +28,15 @@ Route::group(['as' => 'user.','namespace' => 'App\Http\Controllers', 'prefix' =>
 
 });
 
+
+
 Route::group(['middleware' => 'auth','namespace' => 'App\Http\Controllers'], function () {
     Route::get('/dashboard','Dashboard\DashboardController@index')->name('dashboard');
 
 
-
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 
     /*
     |--------------------------------------------------------------------------
