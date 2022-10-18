@@ -29,6 +29,10 @@ Route::group(['as' => 'user.','namespace' => 'App\Http\Controllers', 'prefix' =>
 });
 
 
+Route::get('setting', 'App\Http\Controllers\Setting\SettingController@index')->name('setting.index');
+Route::put('setting/update', 'App\Http\Controllers\Setting\SettingController@update')->name('setting.update');
+
+
 
 Route::group(['middleware' => 'auth','namespace' => 'App\Http\Controllers'], function () {
     Route::get('/dashboard','Dashboard\DashboardController@index')->name('dashboard');
